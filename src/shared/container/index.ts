@@ -1,6 +1,8 @@
 import { container } from 'tsyringe'
 
-import IUserRepository from '@modules/users/repositories/IUserRepository'
+import '@modules/users/providers'
+
+import IUserRepository from '@modules/users/interfaces/IUserRepository'
 import UserRepository from '@modules/users/infra/typeorm/repositories/UserRepository'
 
 container.registerSingleton<IUserRepository>(

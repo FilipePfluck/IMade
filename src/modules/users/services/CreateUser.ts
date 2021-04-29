@@ -1,13 +1,18 @@
+import AppError from '@shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
-import ICreateUserDto from '../dtos/ICreateUserDto'
+import ICreateUserDto from '../interfaces/ICreateUserDto'
 
-import IUserRepository from '../repositories/IUserRepository';
+import IUserRepository from '../interfaces/IUserRepository';
+import IHashProvider from '../providers/hash/IHashProvider'
 
 @injectable()
 export default class CreateUser {
     constructor (
         @inject('UsersRepository')
-        private usersRepository: IUserRepository
+        private usersRepository: IUserRepository,
+
+        @inject('HashProvider')
+        private hashProvider: IHashProvider
     ){}
 
     public async execute({
@@ -17,11 +22,19 @@ export default class CreateUser {
         phone_number, 
         is_provider
     }: ICreateUserDto){
+        const userAlreadyExist = await this.usersRepository.findByEmail(email)
+
+        if(userAlreadyExist){
+            throw new AppError('Email already used')
+        }
+
+        const hashedPassword = await this.hashProvider.generateHash(password)
+
         const user = await this.usersRepository.create({
             name,
             email,
             is_provider,
-            password,
+            password: hashedPassword,
             phone_number
         })
 

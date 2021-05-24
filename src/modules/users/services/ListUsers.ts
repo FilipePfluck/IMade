@@ -1,5 +1,4 @@
 import { inject, injectable } from 'tsyringe';
-import ICreateUserDto from '../interfaces/ICreateUserDto'
 
 import IUserRepository from '../interfaces/IUserRepository';
 

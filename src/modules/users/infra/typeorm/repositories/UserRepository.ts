@@ -45,6 +45,8 @@ class UsersRepository implements IUserRepository {
 
         return user
     }
+
+
 }
 
 export default UsersRepository

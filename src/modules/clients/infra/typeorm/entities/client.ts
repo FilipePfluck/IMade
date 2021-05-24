@@ -1,15 +1,28 @@
-import { Entity, Column, OneToOne,  PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, JoinColumn } from 'typeorm'
-
 import User from '@modules/users/infra/typeorm/entities/user'
+import { Entity, Column,  PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToOne, JoinColumn } from 'typeorm'
 
 @Entity('clients')
-class Client {
+export default class Client {
     @PrimaryGeneratedColumn('uuid')
     id: string
 
-    @OneToOne(()=>User)
+    @OneToOne(() => User)
     @JoinColumn({name: 'user_id'})
-    user: User
+
+    @Column()
+    user_id: string
+
+    @Column()
+    city: string
+
+    @Column()
+    neighborhood: string
+
+    @Column()
+    street: string
+
+    @Column()
+    number: number
 
     @CreateDateColumn()
     created_at: Date
@@ -17,5 +30,3 @@ class Client {
     @UpdateDateColumn()
     updated_at: Date
 }
-
-export default Client

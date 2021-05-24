@@ -27,7 +27,9 @@ export default class createProvider1619636514775 implements MigrationInterface {
                 },
                 {
                     name: 'score',
-                    type: 'varchar',
+                    type: 'numeric',
+                    scale: 2,
+                    precision: 3,
                 },
 
                 {

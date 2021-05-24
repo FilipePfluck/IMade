@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for clients/services/DeleteClient.ts</title>
+    <title>Code coverage report for providers/services/ShowProvider.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">clients/services</a> DeleteClient.ts</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">providers/services</a> ShowProvider.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/22</span>
+                <span class='fraction'>0/28</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/22</span>
+                <span class='fraction'>0/28</span>
             </div>
         
             
@@ -78,7 +78,19 @@
 <a name='L19'></a><a href='#L19'>19</a>
 <a name='L20'></a><a href='#L20'>20</a>
 <a name='L21'></a><a href='#L21'>21</a>
-<a name='L22'></a><a href='#L22'>22</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -102,23 +114,29 @@
 <span class="cline-any cline-no">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >import { injectable, inject } from 'tsyringe'</span></span></span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >import AppError from '@shared/errors/AppError'</span>
-<span class="cstat-no" title="statement not covered" >import IClientRepository from '../interfaces/IClientRepository';</span>
+<span class="cstat-no" title="statement not covered" >import IProviderRepository from '../interfaces/IProviderRepository';</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >import Client from '../infra/typeorm/entities/client'</span>
+<span class="cstat-no" title="statement not covered" >import Provider from '../infra/typeorm/entities/provider'</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >interface IRequest {</span>
 <span class="cstat-no" title="statement not covered" >    id: string,</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >@injectable()</span>
-<span class="cstat-no" title="statement not covered" >export default class DeleteClient {</span>
+<span class="cstat-no" title="statement not covered" >export default class ShowProvider {</span>
 <span class="cstat-no" title="statement not covered" >    constructor (</span>
-<span class="cstat-no" title="statement not covered" >        @inject('clientsRepository')</span>
-<span class="cstat-no" title="statement not covered" >        private clientRepository: IClientRepository</span>
+<span class="cstat-no" title="statement not covered" >        @inject('providersRepository')</span>
+<span class="cstat-no" title="statement not covered" >        private providerRepository: IProviderRepository</span>
 <span class="cstat-no" title="statement not covered" >    ){}</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    public async execute({ id }: IRequest){</span>
-<span class="cstat-no" title="statement not covered" >        await this.clientRepository.delete(id)</span>
+<span class="cstat-no" title="statement not covered" >    public async execute({ id }: IRequest):Promise&lt;Provider&gt;{</span>
+<span class="cstat-no" title="statement not covered" >        const provider = await this.providerRepository.findById(id)</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >        if(!provider){</span>
+<span class="cstat-no" title="statement not covered" >            throw new AppError('Provider does not exists')</span>
+<span class="cstat-no" title="statement not covered" >        }</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >        return provider</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
 <span class="cstat-no" title="statement not covered" >}</span></pre></td></tr></table></pre>
 

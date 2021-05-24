@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for clients/services/CreateClient.ts</title>
+    <title>Code coverage report for providers/services/CreateProvider.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">clients/services</a> CreateClient.ts</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">providers/services</a> CreateProvider.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -97,22 +97,22 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import AppError from '@shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
-import ICreateClientDto from '../interfaces/ICreateClientDto'
+import ICreateProviderDto from '../interfaces/ICreateProviderDto'
 &nbsp;
-import IClientRepository from '../interfaces/IClientRepository';
+import IProviderRepository from '../interfaces/IProviderRepository';
 &nbsp;
 @injectable()
-export default class CreateClient {
+export default class CreateProvider {
     constructor (
-        @inject('clientsRepository')
-        private clientRepository: IClientRepository
+        @inject('providersRepository')
+        private providerRepository: IProviderRepository
     ){}
 &nbsp;
-    public async execute(data: ICreateClientDto){
+    public async execute(data: ICreateProviderDto){
     
-        const client = await this.clientRepository.create(data)
+        const provider = await this.providerRepository.create(data)
 &nbsp;
-        return client
+        return provider
 <span class="cstat-no" title="statement not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >    }</span></span>
 }</pre></td></tr></table></pre>
 

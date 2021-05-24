@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for clients/services/DeleteClient.ts</title>
+    <title>Code coverage report for providers/services/DeleteProvider.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">clients/services</a> DeleteClient.ts</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">providers/services</a> DeleteProvider.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -102,23 +102,23 @@
 <span class="cline-any cline-no">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >import { injectable, inject } from 'tsyringe'</span></span></span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >import AppError from '@shared/errors/AppError'</span>
-<span class="cstat-no" title="statement not covered" >import IClientRepository from '../interfaces/IClientRepository';</span>
+<span class="cstat-no" title="statement not covered" >import IProviderRepository from '../interfaces/IProviderRepository';</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >import Client from '../infra/typeorm/entities/client'</span>
+<span class="cstat-no" title="statement not covered" >import Provider from '../infra/typeorm/entities/provider'</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >interface IRequest {</span>
 <span class="cstat-no" title="statement not covered" >    id: string,</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >@injectable()</span>
-<span class="cstat-no" title="statement not covered" >export default class DeleteClient {</span>
+<span class="cstat-no" title="statement not covered" >export default class DeleteProvider {</span>
 <span class="cstat-no" title="statement not covered" >    constructor (</span>
-<span class="cstat-no" title="statement not covered" >        @inject('clientsRepository')</span>
-<span class="cstat-no" title="statement not covered" >        private clientRepository: IClientRepository</span>
+<span class="cstat-no" title="statement not covered" >        @inject('providersRepository')</span>
+<span class="cstat-no" title="statement not covered" >        private providerRepository: IProviderRepository</span>
 <span class="cstat-no" title="statement not covered" >    ){}</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >    public async execute({ id }: IRequest){</span>
-<span class="cstat-no" title="statement not covered" >        await this.clientRepository.delete(id)</span>
+<span class="cstat-no" title="statement not covered" >        await this.providerRepository.delete(id)</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
 <span class="cstat-no" title="statement not covered" >}</span></pre></td></tr></table></pre>
 

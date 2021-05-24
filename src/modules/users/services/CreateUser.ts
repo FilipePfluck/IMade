@@ -1,3 +1,5 @@
+import IClientRepository from '@modules/clients/interfaces/IClientRepository';
+import IProviderRepository from '@modules/providers/interfaces/IProviderRepository';
 import AppError from '@shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
 import ICreateUserDto from '../interfaces/ICreateUserDto'
@@ -12,7 +14,7 @@ export default class CreateUser {
         private usersRepository: IUserRepository,
 
         @inject('HashProvider')
-        private hashProvider: IHashProvider
+        private hashProvider: IHashProvider,
     ){}
 
     public async execute({

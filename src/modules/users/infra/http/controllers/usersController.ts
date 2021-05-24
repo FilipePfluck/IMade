@@ -7,12 +7,27 @@ import ListUsers from '@modules/users/services/ListUsers'
 import ShowUser from '@modules/users/services/ShowUser'
 import UpdateUser from '@modules/users/services/UpdateProfile'
 
+import CreateClient from '@modules/clients/services/CreateClient'
+import CreateProvider from '@modules/providers/services/CreateProvider'
+
 export default class UsersController {
     public async create(request: Request, response: Response){
         try{
             const createUser = container.resolve(CreateUser)
+            const createClient = container.resolve(CreateClient)
+            const createProvider = container.resolve(CreateProvider)
 
-            const { name, email, password, phone_number, is_provider } = request.body
+            const { 
+                name, 
+                email, 
+                password, 
+                phone_number, 
+                is_provider, 
+                city,
+                neighborhood,
+                street,
+                number
+            } = request.body
 
             const user = await createUser.execute({
                 name,
@@ -21,6 +36,22 @@ export default class UsersController {
                 password,
                 phone_number
             })
+
+            if(is_provider){
+                await createProvider.execute({
+                    city,
+                    score: 0,
+                    user_id: user.id
+                })
+            }else{
+                await createClient.execute({
+                    city,
+                    neighborhood,
+                    number,
+                    street,
+                    user_id: user.id
+                })
+            }
 
             return response.json(user)
         }catch(error){

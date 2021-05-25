@@ -14,7 +14,7 @@ export default class ProviderController {
 
             const data = request.body
 
-            const provider = await createProvider.execute(data)
+            const provider = await createProvider.execute({...data, score: 0, avaliations: 0})
 
             return response.json(provider)
         }catch(error){

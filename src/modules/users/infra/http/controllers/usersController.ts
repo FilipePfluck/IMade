@@ -41,7 +41,8 @@ export default class UsersController {
                 await createProvider.execute({
                     city,
                     score: 0,
-                    user_id: user.id
+                    user_id: user.id,
+                    avaliations: 0
                 })
             }else{
                 await createClient.execute({

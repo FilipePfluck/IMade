@@ -18,6 +18,9 @@ export default class Provider {
     @Column()
     score: number
 
+    @Column()
+    avaliations: number
+
     @CreateDateColumn()
     created_at: Date
 

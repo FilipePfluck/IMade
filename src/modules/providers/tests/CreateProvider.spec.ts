@@ -21,8 +21,9 @@ describe('CreateProvider', ()=> {
 
         const provider = await createProvider.execute({
             city: 'Ivoti',
-            score: 5,
-            user_id
+            score: 0,
+            user_id,
+            avaliations: 0
         })
 
         expect(provider).toHaveProperty('id')

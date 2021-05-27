@@ -22,7 +22,8 @@ describe('UpdateProvider', () => {
         const provider = await fakeProviderRepository.create({
             user_id,
             city: 'Ivoti',
-            score: 5
+            score: 0,
+            avaliations: 0
         })
 
         const updatedProvider = await updateProvider.execute({

@@ -10,11 +10,12 @@ export default class ListOrder {
         private orderRepository: IOrderRepository
     ){}
 
-    public async execute(id: string){
-        const orders = await this.orderRepository.findClientOrder(id)
+    public async execute(city: string){
+        console.log(city)
+        const orders = await this.orderRepository.findByCity(city)
+        console.log(orders)
 
-
-        const pendingOrders = orders.filter(order => {
+        const ordersFromCity = orders.filter(order => {
             const compareDate = new Date(order.date)
 
             const isNotPastDate = isAfter(compareDate, Date.now())
@@ -22,6 +23,6 @@ export default class ListOrder {
             return !order.provider_id && isNotPastDate
         })
 
-        return pendingOrders
+        return ordersFromCity
     }
 }

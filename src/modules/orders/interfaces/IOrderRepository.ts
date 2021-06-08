@@ -7,5 +7,6 @@ export default interface IOrderRepository {
     find(): Promise<Order[]>
     findById(id: string): Promise<Order | undefined>
     findClientOrder(client_id: string): Promise<Order[]>
+    findByCity(city: string): Promise<Order[]>
     delete(id: string): Promise<void>
 }

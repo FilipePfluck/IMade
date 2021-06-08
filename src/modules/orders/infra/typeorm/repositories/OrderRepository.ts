@@ -49,4 +49,14 @@ export default class OrderRepository implements IOrderRepository {
 
         return orders
     }
+
+    public async findByCity(city: string){
+        const orders = await this.ormRepository.find({
+            where: {
+                city
+            }
+        })
+
+        return orders
+    }
 }

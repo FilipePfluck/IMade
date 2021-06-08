@@ -46,4 +46,10 @@ export default class FakeOrderRepository
             
             return orders
         }
+
+        public async findByCity(city: string){
+            const orders = this.orders.filter(order => order.city === city)
+            
+            return orders
+        }
     }

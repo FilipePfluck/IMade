@@ -14,6 +14,9 @@ import ProviderRepository from '@modules/providers/infra/typeorm/repositories/Pr
 import IOrderRepository from '@modules/orders/interfaces/IOrderRepository'
 import OrderRepository from '@modules/orders/infra/typeorm/repositories/OrderRepository'
 
+import IOfferRepository from '@modules/offers/interfaces/IOfferRepository'
+import OfferRepository from '@modules/offers/infra/typeorm/repositories/OfferRepository'
+
 container.registerSingleton<IUserRepository>(
     'UsersRepository',
     UserRepository
@@ -32,4 +35,9 @@ container.registerSingleton<IProviderRepository>(
 container.registerSingleton<IOrderRepository>(
     'ordersRepository',
     OrderRepository
+)
+
+container.registerSingleton<IOfferRepository>(
+    'offersRepository',
+    OfferRepository
 )

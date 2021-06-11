@@ -12,8 +12,6 @@ export default class CreateProvider {
     ){}
 
     public async execute(data: ICreateProviderDto){
-        
-        console.log('asdasd',data)
 
         const provider = await this.providerRepository.create(data)
 

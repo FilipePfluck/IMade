@@ -4,24 +4,23 @@ import { isAfter } from 'date-fns'
 import IOrderRepository from '../interfaces/IOrderRepository';
 
 @injectable()
-export default class FindAllCLientOrders {
+export default class FindAcceptedOrdersFromClient {
     constructor (
         @inject('ordersRepository')
         private orderRepository: IOrderRepository
     ){}
 
     public async execute(id: string){
-        const orders = await this.orderRepository.findClientOrder(id)
+        const orders = await this.orderRepository.findProviderOrder(id)
 
-
-        const pendingOrders = orders.filter(order => {
+        const providerOrders = orders.filter(order => {
             const compareDate = new Date(order.date)
 
             const isNotPastDate = isAfter(compareDate, Date.now())
 
-            return !order.provider_id && isNotPastDate
+            return isNotPastDate
         })
 
-        return pendingOrders
+        return providerOrders
     }
 }

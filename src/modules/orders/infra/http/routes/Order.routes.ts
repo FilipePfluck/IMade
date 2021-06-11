@@ -16,6 +16,8 @@ orderRoutes.delete('/:id', orderController.delete)
 orderRoutes.get('/:id', orderController.show)
 
 orderRoutes.get('/pending/:client_id', clientOrdersController.index)
-orderRoutes.get('/byCity', orderController.findFromCity)
+orderRoutes.get('/accepted/:client_id', clientOrdersController.index)
+
+orderRoutes.patch('/acceptOrder', orderController.acceptOrder)
 
 export default orderRoutes

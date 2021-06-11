@@ -7,6 +7,7 @@ import ShowOrder from '@modules/orders/services/ShowOrder'
 import UpdateOrder from '@modules/orders/services/UpdateOrder'
 import DeleteOrder from '@modules/orders/services/DeleteOrder'
 import ListOrdersFromCity from '@modules/orders/services/ListOrdersFromCity'
+import AcceptOrder from '@modules/orders/services/AcceptOrder'
 
 export default class OrderController {
     public async create(request: Request, response: Response){
@@ -70,15 +71,13 @@ export default class OrderController {
         return response.status(204).send()
     }
 
-    public async findFromCity (request: Request, response: Response) { 
-        console.log('asdasd')
+    public async acceptOrder (request: Request, response: Response) {
+        const {order_id, provider_id} = request.body
 
-        const {city} = request.query as {city: string}
+        const acceptOrder = container.resolve(AcceptOrder)
 
-        const listOrdersFromCity = container.resolve(ListOrdersFromCity)
+        await acceptOrder.execute({order_id, provider_id})
 
-        const orders = listOrdersFromCity.execute(city)
-
-        return response.json(orders)
+        return response.status(204).send()
     }
 } 

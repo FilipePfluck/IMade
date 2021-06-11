@@ -4,7 +4,7 @@ import { isAfter } from 'date-fns'
 import IOrderRepository from '../interfaces/IOrderRepository';
 
 @injectable()
-export default class FindAllCLientOrders {
+export default class FindAcceptedOrdersFromClient {
     constructor (
         @inject('ordersRepository')
         private orderRepository: IOrderRepository
@@ -19,7 +19,7 @@ export default class FindAllCLientOrders {
 
             const isNotPastDate = isAfter(compareDate, Date.now())
 
-            return !order.provider_id && isNotPastDate
+            return !!order.provider_id && isNotPastDate
         })
 
         return pendingOrders

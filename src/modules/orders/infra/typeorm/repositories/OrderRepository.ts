@@ -3,6 +3,7 @@ import IOrderRepository from "@modules/orders/interfaces/IOrderRepository";
 import { getRepository, Repository } from "typeorm";
 import Order from "../entities/order";
 
+
 export default class OrderRepository implements IOrderRepository {
     private ormRepository: Repository<Order>
 
@@ -54,6 +55,16 @@ export default class OrderRepository implements IOrderRepository {
         const orders = await this.ormRepository.find({
             where: {
                 city
+            }
+        })
+
+        return orders
+    }
+
+    public async findProviderOrder(provider_id: string){
+        const orders  = await this.ormRepository.find({
+            where: {
+                provider_id
             }
         })
 

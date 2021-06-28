@@ -39,4 +39,20 @@ export default class OfferRepository implements IOfferRepository {
     public async delete(id: string){
         await this.ormRepository.delete(id)
     }
+
+    public async findProviderOffers(provider_id: string){
+        const offers = this.ormRepository.find({
+            where: {provider_id}
+        })
+
+        return offers
+    }
+
+    public async findOrderOffers(order_id: string){
+        const offers = this.ormRepository.find({
+            where: {order_id}
+        })
+
+        return offers
+    }
 }

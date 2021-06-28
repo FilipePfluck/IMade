@@ -7,4 +7,6 @@ export default interface IOfferRepository {
     find(): Promise<Offer[]>
     findById(id: string): Promise<Offer | undefined>
     delete(id: string): Promise<void>
+    findProviderOffers(provider_id: string): Promise<Offer[]> 
+    findOrderOffers(order_id: string): Promise<Offer[]>
 }

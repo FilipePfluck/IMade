@@ -6,6 +6,8 @@ import ListOffer from '@modules/offers/services/ListOffer'
 import ShowOffer from '@modules/offers/services/ShowOffer'
 import UpdateOffer from '@modules/offers/services/UpdateOffer'
 import DeleteOffer from '@modules/offers/services/DeleteOffer'
+import ListProviderOffers from '@modules/offers/services/ListProviderOffers'
+import ListOrderOffers from '@modules/offers/services/ListOrderOffers'
 
 export default class OfferController {
     public async create(request: Request, response: Response){

@@ -52,4 +52,10 @@ export default class FakeOrderRepository
             
             return orders
         }
+
+        public async findProviderOrder(id: string){
+            const orders = this.orders.filter(order => order.provider_id === id)
+
+            return orders
+        }
     }

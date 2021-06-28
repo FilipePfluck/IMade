@@ -40,4 +40,20 @@ export default class FakeOfferRepository
         public async delete(id: string): Promise<void> {
             this.offers = this.offers.filter(offer => offer.id !== id)
         }
+
+        public async findProviderOffers(provider_id: string){
+            const offers = this.offers.filter(offer => {
+                return offer.provider_id === provider_id
+            })
+
+            return offers
+        }
+
+        public async findOrderOffers(order_id: string){
+            const offers = this.offers.filter(offer => {
+                return offer.order_id === order_id
+            })
+
+            return offers
+        }
     }

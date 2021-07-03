@@ -13,4 +13,7 @@ offerRoutes.delete('/:id', offerController.delete)
 
 offerRoutes.get('/:id', offerController.show)
 
+offerRoutes.get('/order/:order_id', offerController.listOrdersOffers)
+offerRoutes.get('/pending/provider/:provider_id', offerController.listProviderOffers)
+
 export default offerRoutes

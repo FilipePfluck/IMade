@@ -1,3 +1,4 @@
+import { isAfter } from 'date-fns';
 import { inject, injectable } from 'tsyringe';
 
 import IOfferRepository from '../interfaces/IOfferRepository';
@@ -12,6 +13,14 @@ export default class ListProviderOffer {
     public async execute(provider_id: string){
         const offers = await this.offerRepository.findProviderOffers(provider_id)
 
-        return offers
+        const filteredOffers = offers.filter(offer => {
+            const compareDate = new Date(offer.order.date)
+
+            const isNotPastDate = isAfter(compareDate, Date.now())
+
+            return offer.order.status !== 'accepted' && isNotPastDate
+        })
+
+        return filteredOffers
     }
 }

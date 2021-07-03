@@ -81,4 +81,24 @@ export default class OfferController {
             return response.status(404).json({error: error.message})
         }
     }
+
+    public async listProviderOffers (request: Request, response: Response){
+        const { provider_id } = request.params
+
+        const listProviderOffers = container.resolve(ListProviderOffers)
+
+        const offers = await listProviderOffers.execute(provider_id)
+
+        return response.json(offers)
+    }
+
+    public async listOrdersOffers (request: Request, response: Response){
+        const { order_id } = request.params
+
+        const listOrdersOffers = container.resolve(ListOrderOffers)
+
+        const offers = await listOrdersOffers.execute(order_id)
+
+        return response.json(offers)
+    }
 } 

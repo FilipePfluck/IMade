@@ -18,7 +18,9 @@ export default class Offer {
     @JoinColumn({name: 'provider_id'})
     provider: Provider
 
-    @ManyToOne(()=> Order)
+    @ManyToOne(()=> Order, {
+        eager: true
+    })
     @JoinColumn({name: 'order_id'})
     order: Order
 

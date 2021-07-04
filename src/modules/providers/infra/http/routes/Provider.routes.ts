@@ -1,3 +1,4 @@
+import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated'
 import { Router } from 'express'
 
 import ProviderController from '../controllers/ProviderController'
@@ -10,11 +11,11 @@ const providerRoutes = Router()
 
 providerRoutes.post('/', providerController.create)
 providerRoutes.get('/', providerController.index)
-providerRoutes.put('/:id', providerController.update)
-providerRoutes.delete('/:id', providerController.delete)
+providerRoutes.put('/:id', ensureAuthenticated, providerController.update)
+providerRoutes.delete('/:id', ensureAuthenticated, providerController.delete)
 
-providerRoutes.get('/:id', providerController.show)
+providerRoutes.get('/:id', ensureAuthenticated, providerController.show)
 
-providerRoutes.patch('/score/:id', providerScoreController.update)
+providerRoutes.patch('/score/:id', ensureAuthenticated, providerScoreController.update)
 
 export default providerRoutes

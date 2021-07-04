@@ -40,4 +40,9 @@ export default class FakeClientRepository
         public async delete(id: string): Promise<void> {
             this.clients = this.clients.filter(client => client.id !== id)
         }
+
+        public async findByUserId(user_id: string){
+            const  client = this.clients.find(client => client.user_id === user_id)
+            return client
+        }
     }

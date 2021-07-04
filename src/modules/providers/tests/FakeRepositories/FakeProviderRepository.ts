@@ -40,4 +40,9 @@ export default class FakeProviderRepository
         public async delete(id: string): Promise<void> {
             this.providers = this.providers.filter(provider => provider.id !== id)
         }
+
+        public async findByUserId(user_id: string){
+            const  provider = this.providers.find(provider => provider.user_id === user_id)
+            return provider
+        }
     }

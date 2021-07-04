@@ -39,4 +39,14 @@ export default class ClientRepository implements IClientRepository {
     public async delete(id: string){
         await this.ormRepository.delete(id)
     }
+
+    public async findByUserId(user_id: string){
+        const client = await this.ormRepository.findOne({
+            where: {
+                user_id
+            }
+        })
+
+        return client
+    }
 }

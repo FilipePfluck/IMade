@@ -1,3 +1,4 @@
+import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated'
 import { Router } from 'express'
 
 import ClientController from '../controllers/ClientController'
@@ -8,8 +9,8 @@ const clientRoutes = Router()
 
 clientRoutes.post('/', clientController.create)
 clientRoutes.get('/', clientController.index)
-clientRoutes.put('/:id', clientController.update)
-clientRoutes.delete('/:id', clientController.delete)
+clientRoutes.put('/:id', ensureAuthenticated, clientController.update)
+clientRoutes.delete('/:id', ensureAuthenticated, clientController.delete)
 
 clientRoutes.get('/:id', clientController.show)
 

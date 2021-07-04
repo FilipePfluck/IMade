@@ -7,4 +7,5 @@ export default interface IProviderRepository {
     find(): Promise<Provider[]>
     findById(id: string): Promise<Provider | undefined>
     delete(id: string): Promise<void>
+    findByUserId(id: string): Promise<Provider | undefined>
 }

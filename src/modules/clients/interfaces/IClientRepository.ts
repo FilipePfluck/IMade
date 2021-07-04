@@ -7,4 +7,5 @@ export default interface IClientRepository {
     find(): Promise<Client[]>
     findById(id: string): Promise<Client | undefined>
     delete(id: string): Promise<void>
+    findByUserId(id: string): Promise<Client | undefined>
 }

@@ -39,4 +39,14 @@ export default class ProviderRepository implements IProviderRepository {
     public async delete(id: string){
         await this.ormRepository.delete(id)
     }
+
+    public async findByUserId(user_id: string){
+        const provider = await this.ormRepository.findOne({
+            where: {
+                user_id
+            }
+        })
+
+        return provider
+    }
 }

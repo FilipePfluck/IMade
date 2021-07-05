@@ -8,6 +8,7 @@ import UpdateOrder from '@modules/orders/services/UpdateOrder'
 import DeleteOrder from '@modules/orders/services/DeleteOrder'
 import ListOrdersFromCity from '@modules/orders/services/ListOrdersFromCity'
 import AcceptOrder from '@modules/orders/services/AcceptOrder'
+import { parseISO } from 'date-fns'
 
 export default class OrderController {
     public async create(request: Request, response: Response){
@@ -15,7 +16,7 @@ export default class OrderController {
 
         const data = request.body
 
-        const order = await createOrder.execute({...data, status: "pending"})
+        const order = await createOrder.execute({...data, date: parseISO(data.date), status: "pending"})
 
         return response.json(order)
     }

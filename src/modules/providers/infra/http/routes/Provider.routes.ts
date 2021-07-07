@@ -11,11 +11,11 @@ const providerRoutes = Router()
 
 providerRoutes.post('/', providerController.create)
 providerRoutes.get('/', providerController.index)
-providerRoutes.put('/:id', ensureAuthenticated, providerController.update)
-providerRoutes.delete('/:id', ensureAuthenticated, providerController.delete)
+providerRoutes.put('/:id', /* ensureAuthenticated, */ providerController.update)
+providerRoutes.delete('/:id', /* ensureAuthenticated, */ providerController.delete)
 
-providerRoutes.get('/:id', ensureAuthenticated, providerController.show)
+providerRoutes.get('/:id', /* ensureAuthenticated, */ providerController.show)
 
-providerRoutes.patch('/score/:id', ensureAuthenticated, providerScoreController.update)
+providerRoutes.patch('/score/:id', /* ensureAuthenticated, */ providerScoreController.update)
 
 export default providerRoutes

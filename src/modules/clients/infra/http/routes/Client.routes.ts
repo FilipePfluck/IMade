@@ -9,8 +9,8 @@ const clientRoutes = Router()
 
 clientRoutes.post('/', clientController.create)
 clientRoutes.get('/', clientController.index)
-clientRoutes.put('/:id', ensureAuthenticated, clientController.update)
-clientRoutes.delete('/:id', ensureAuthenticated, clientController.delete)
+clientRoutes.put('/:id', /* ensureAuthenticated, */ clientController.update)
+clientRoutes.delete('/:id', /* ensureAuthenticated, */ clientController.delete)
 
 clientRoutes.get('/:id', clientController.show)
 

@@ -9,7 +9,7 @@ const userRoutes = Router()
 
 userRoutes.post('/', userController.create)
 userRoutes.get('/', userController.index)
-userRoutes.put('/', ensureAuthenticated, userController.update)
+userRoutes.put('/', /* ensureAuthenticated, */ userController.update)
 
 userRoutes.get('/:id', userController.show)
 

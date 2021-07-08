@@ -14,7 +14,9 @@ export default class Order {
     @Column()
     client_id: string
 
-    @ManyToOne(()=> Provider)
+    @ManyToOne(()=> Provider, {
+        eager: true
+    })
     @JoinColumn({name: 'provider_id'})
     provider: Provider
 

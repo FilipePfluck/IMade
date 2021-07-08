@@ -6,8 +6,11 @@ export default class Provider {
     @PrimaryGeneratedColumn('uuid')
     id: string
 
-    @OneToOne(() => User)
+    @OneToOne(() => User, {
+        eager: true
+    })
     @JoinColumn({name: 'user_id'})
+    user: User
 
     @Column()
     user_id: string
